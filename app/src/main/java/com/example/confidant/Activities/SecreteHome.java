@@ -28,7 +28,7 @@ public class SecreteHome extends AppCompatActivity {
         Secrete secrete = db.getSecrete(index+1);
         nameHome.setText(secrete.getSecreteName());
         passHome.setText(secrete.getSecreteKey());
-        descHome.setText(secrete.getDescription(););
+        descHome.setText(secrete.getDescription());
 
     }
 }
