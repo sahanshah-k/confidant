@@ -84,6 +84,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.close();
     }
+    public void updateSecrete(Secrete secrete,int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(SECRETE_NAME, secrete.getSecreteName());
+        values.put(SECRETE_KEY, secrete.getSecreteKey());
+        values.put(SECRETE_DESC, secrete.getDescription());
+        db.update(TABLE_SECRET,values,"id="+id,null);
+        db.close();
+    }
+
+    public void deleteSecrete(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_SECRET,"id="+id,null);
+        db.close();
+    }
 
     public Secrete getSecrete(int id) {
         Secrete secrete = new Secrete();
@@ -123,6 +140,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return secreteListTitle;
+    }
+
+    public List<Secrete> getSecreteListObjects() {
+        List<Secrete> secreteListObjects = new ArrayList<Secrete>();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_SECRET +" ORDER BY "+SECRETE_ID + " ASC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Secrete secrete = new Secrete();
+                secrete.setId(Integer.parseInt(cursor.getString(0)));
+                secrete.setSecreteName(cursor.getString(1));
+                secrete.setDescription(cursor.getString(2));
+                secrete.setSecreteKey(cursor.getString(3));
+
+                secreteListObjects.add(secrete);
+            } while (cursor.moveToNext());
+        }
+        return secreteListObjects;
     }
 
     public long getDetailsCount() {

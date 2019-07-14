@@ -11,18 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:id="@+id/floatButton"
+        android:id="@+id/bottomBar"
         app:fabAlignmentMode="end"
-        app:navigationIcon="@drawable/ic_more_vert_white_24dp"
+        android:backgroundTint="@color/colorAccent"
+        app:navigationIcon="@drawable/ic_menu_primary_dark_24dp"
         >
 
     </android.support.design.bottomappbar.BottomAppBar>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
+        android:id="@+id/floatEdit"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/floatButton"
-        android:src="@drawable/ic_mode_edit_white_24dp"
+        app:layout_anchor="@id/bottomBar"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_mode_edit_primary_dark_24dp"
         />
 
 </android.support.design.widget.CoordinatorLayout>

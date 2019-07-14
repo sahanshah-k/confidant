@@ -7,15 +7,13 @@
     android:theme="@style/Theme.MaterialComponents">
 
     <android.support.design.bottomappbar.BottomAppBar
-        android:backgroundTint="@color/colorAccent"
+        android:id="@+id/floatButton"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_gravity="bottom"
-        android:id="@+id/floatButton"
-        app:hideOnScroll="true"
-        app:layout_scrollFlags="scroll|enterAlways"
-    >
+        android:backgroundTint="@color/colorAccent"
+        app:fabAlignmentMode="end">
 
     </android.support.design.bottomappbar.BottomAppBar>
 
@@ -23,9 +21,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/floatButton"
-        android:id="@+id/addNewSecrete"
-        android:src="@drawable/ic_add_primary_dark_24dp"
+        android:id="@+id/floatButtonNew"
         android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_vpn_key_white_24dp"
+
         />
 
 </android.support.design.widget.CoordinatorLayout>
