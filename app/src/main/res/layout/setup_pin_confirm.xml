@@ -6,7 +6,7 @@
 
 
 
-    <include layout="@layout/content_setup_pinlock" />
+    <include layout="@layout/content_setup_pinlock_confirm" />
 
 
 </android.support.constraint.ConstraintLayout>

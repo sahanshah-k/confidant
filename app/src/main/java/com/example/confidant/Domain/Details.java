@@ -10,6 +10,9 @@ public class Details implements Serializable {
     int pin;
     int status;
 
+    public Details() {
+    }
+
     public Details(String mail, String name, int status) {
         this.mail = mail;
         this.name = name;

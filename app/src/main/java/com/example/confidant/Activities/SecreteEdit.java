@@ -34,6 +34,12 @@ public class SecreteEdit extends AppCompatActivity {
 
     int index;
 
+    @Override
+    public void onBackPressed(){
+        Intent a = new Intent(SecreteEdit.this,Land.class);
+        startActivity(a);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

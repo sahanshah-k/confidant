@@ -102,6 +102,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public Details getDetails() {
+        Details details = new Details();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_DETAILS + " LIMIT 1";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                details.setMail(cursor.getString(0));
+                details.setName(cursor.getString(1));
+
+            } while (cursor.moveToNext());
+        }
+        return details;
+
+    }
+
+
     public Secrete getSecrete(int id) {
         Secrete secrete = new Secrete();
 

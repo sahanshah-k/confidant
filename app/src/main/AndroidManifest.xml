@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.confidant">
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -10,13 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:noHistory="true">
         </activity>
-        <activity android:name=".Activities.SetupPin"></activity>
-        <activity android:name=".Activities.Land"></activity>
-        <activity android:name=".Activities.SecreteHome"></activity>
-        <activity android:name=".Activities.SecreteNew"></activity>
-        <activity android:name=".Activities.SecreteEdit"></activity>
+        <activity
+            android:name=".Activities.SetupPin"
+            android:noHistory="true"></activity>
+        <activity android:name=".Activities.Land"
+            android:noHistory="true"></activity>
+        <activity
+            android:name=".Activities.SecreteHome"
+            android:noHistory="true"></activity>
+        <activity
+            android:name=".Activities.SecreteNew"
+            android:noHistory="true"></activity>
+        <activity
+            android:name=".Activities.SecreteEdit"
+            android:noHistory="true"></activity>
+        <activity
+            android:name=".Activities.SetupPinConfirm"
+            android:noHistory="true"></activity>
         <activity android:name=".Activities.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

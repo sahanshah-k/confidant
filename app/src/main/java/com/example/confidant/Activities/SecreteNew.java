@@ -28,6 +28,12 @@ public class SecreteNew extends AppCompatActivity {
     FloatingActionButton newButton;
 
     @Override
+    public void onBackPressed(){
+        Intent a = new Intent(SecreteNew.this,Land.class);
+        startActivity(a);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secrete_new);

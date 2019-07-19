@@ -1,7 +1,9 @@
 package com.example.confidant.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.button.MaterialButton;
 import android.support.design.widget.BottomSheetDialogFragment;
@@ -33,6 +35,12 @@ public class SecreteHome extends AppCompatActivity {
     BottomAppBar bottomAppBar;
 
     @Override
+    public void onBackPressed(){
+        Intent a = new Intent(SecreteHome.this,Land.class);
+        startActivity(a);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
@@ -54,6 +62,8 @@ public class SecreteHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secrete_home);
+        Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
 
         bottomAppBar = findViewById(R.id.bottomBar);
 
@@ -98,6 +108,7 @@ public class SecreteHome extends AppCompatActivity {
                     }
                     passHome.setText(decryptPass);
                     decryptFlag = 1;
+                    vibe.vibrate(100);
                     Snackbar.make(view, "Decrypted!", Snackbar.LENGTH_SHORT).show();
                 }
                 else

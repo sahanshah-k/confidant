@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,6 +33,7 @@ public class Home extends AppCompatActivity {
         verify = findViewById(R.id.login);
         pin = findViewById(R.id.pin);
         coordinatorLayoutView = findViewById(R.id.home);
+        Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 
         final InputMethodManager inputManager = (InputMethodManager)
@@ -67,10 +69,14 @@ public class Home extends AppCompatActivity {
         PinLockListener mPinLockListener = new PinLockListener() {
             @Override
             public void onComplete(String pin) {
+                vibe.vibrate(100);
                 if(db.verifyPin(pin) > 0)
                     startActivity(land);
-                else
+                else {
                     Snackbar.make(coordinatorLayoutView, "Wrong PIN!", Snackbar.LENGTH_SHORT).show();
+                    vibe.vibrate(1000);
+
+                }
             }
 
             @Override
@@ -79,6 +85,7 @@ public class Home extends AppCompatActivity {
 
             @Override
             public void onPinChange(int pinLength, String intermediatePin) {
+                vibe.vibrate(100);
             }
         };
 

@@ -4,10 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,16 +13,16 @@ import com.andrognito.pinlockview.IndicatorDots;
 import com.andrognito.pinlockview.PinLockListener;
 import com.andrognito.pinlockview.PinLockView;
 import com.example.confidant.Domain.Details;
-import com.example.confidant.MainActivity;
 import com.example.confidant.R;
 import com.example.confidant.Service.DatabaseHandler;
 
-public class SetupPin extends AppCompatActivity {
+public class SetupPinConfirm extends AppCompatActivity {
 
     EditText pin;
     Button setup;
     PinLockView mPinLockView;
     IndicatorDots mIndicatorDots;
+
     @Override
     public void onBackPressed(){
         Intent a = new Intent(Intent.ACTION_MAIN);
@@ -38,9 +35,12 @@ public class SetupPin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.setup_pin);
+        setContentView(R.layout.setup_pin_confirm);
+        final DatabaseHandler db = new DatabaseHandler(this);
         Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        Toast.makeText(getApplicationContext(),"Enter new PIN!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Confirm PIN", Toast.LENGTH_SHORT).show();
+
+
 
 /*
         pin = findViewById(R.id.pin);
@@ -68,10 +68,19 @@ public class SetupPin extends AppCompatActivity {
             public void onComplete(String pin) {
                 vibe.vibrate(100);
                 Details details = (Details) getIntent().getSerializableExtra("details");
-                details.setPin(Integer.parseInt(pin.trim()));
-                Intent confirm = new Intent(SetupPin.this, SetupPinConfirm.class);
-                confirm.putExtra("details", details);
-                startActivity(confirm);
+                if(pin.equals(String.valueOf(details.getPin()))){
+                    Intent land = new Intent(SetupPinConfirm.this, Land.class);
+                    Toast.makeText(getApplicationContext(),"Success", Toast.LENGTH_SHORT).show();
+                    db.addDetails(details);
+                    startActivity(land);
+                }
+                else{
+                    vibe.vibrate(1000);
+                    Intent pinPage = new Intent(SetupPinConfirm.this, SetupPin.class);
+                    Toast.makeText(getApplicationContext(),"PINs doesn't match!", Toast.LENGTH_SHORT).show();
+                    pinPage.putExtra("details", details);
+                    startActivity(pinPage);
+                }
             }
 
             @Override
@@ -80,16 +89,16 @@ public class SetupPin extends AppCompatActivity {
 
             @Override
             public void onPinChange(int pinLength, String intermediatePin) {
-                    vibe.vibrate(100);
+                vibe.vibrate(100);
             }
         };
 
 
-        mPinLockView = (PinLockView) findViewById(R.id.pin_lock_view_setup);
+        mPinLockView = (PinLockView) findViewById(R.id.pin_lock_view_setup_confirm);
         mPinLockView.setShowDeleteButton(false);
 
         mPinLockView.setPinLockListener(mPinLockListener);
-        mIndicatorDots = (IndicatorDots) findViewById(R.id.indicator_dots_setup);
+        mIndicatorDots = (IndicatorDots) findViewById(R.id.indicator_dots_setup_confirm);
         mIndicatorDots.setIndicatorType(IndicatorDots.IndicatorType.FILL_WITH_ANIMATION);
 
         mPinLockView.attachIndicatorDots(mIndicatorDots);
