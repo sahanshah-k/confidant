@@ -28,6 +28,7 @@ import com.example.confidant.Service.DatabaseHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,7 +57,7 @@ public class Land extends AppCompatActivity {
         final DatabaseHandler db = new DatabaseHandler(this);
         final List<Secrete> secreteListObjects = db.getSecreteListObjects();
 
-        HashMap<String, String> nameDesc = db.getSecreteList();
+        LinkedHashMap<String, String> nameDesc = db.getSecreteList();
 
         List<HashMap<String, String>> listItems = new ArrayList<>();
         adapter = new SimpleAdapter(this, listItems, R.layout.list_item,

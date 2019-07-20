@@ -49,7 +49,7 @@ public class SecreteEdit extends AppCompatActivity {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         index = getIntent().getIntExtra("index",-1);
-        Toast.makeText(getApplicationContext(),String.valueOf(index),Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(),String.valueOf(index),Toast.LENGTH_SHORT).show();
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog_Alert);

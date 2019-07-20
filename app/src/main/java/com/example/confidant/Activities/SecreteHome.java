@@ -77,7 +77,7 @@ public class SecreteHome extends AppCompatActivity {
         decrypt = findViewById(R.id.decrypt);
 
         index = getIntent().getIntExtra("index",-1);
-        Toast.makeText(getApplicationContext(),String.valueOf(index),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),String.valueOf(index),Toast.LENGTH_SHORT).show();
         final DatabaseHandler db = new DatabaseHandler(this);
         Secrete secrete = db.getSecrete(index);
         nameHome.setText(secrete.getSecreteName());

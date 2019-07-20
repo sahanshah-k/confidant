@@ -12,6 +12,7 @@ import com.example.confidant.Domain.Secrete;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -145,8 +146,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return secrete;
     }
 
-    public HashMap<String, String> getSecreteList() {
-        HashMap<String, String> nameDesc = new HashMap<>();
+    public LinkedHashMap<String, String> getSecreteList() {
+        LinkedHashMap<String, String> nameDesc = new LinkedHashMap<>();
         String selectQuery = "SELECT  * FROM " + TABLE_SECRET +" ORDER BY "+SECRETE_ID + " ASC";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -154,7 +155,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 description = cursor.getString(3);
-                if(description.length() > 15){
+                if(description.length() > 21){
                     description = description.substring(0,20) + "...";
                 }
                 nameDesc.put(cursor.getString(1), description);
