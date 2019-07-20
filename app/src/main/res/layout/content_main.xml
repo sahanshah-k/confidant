@@ -39,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Your Name"
+            android:maxLength="20"
             android:inputType="textPersonName" />
     </android.support.design.widget.TextInputLayout>
 

@@ -11,6 +11,7 @@ import com.example.confidant.Domain.Details;
 import com.example.confidant.Domain.Secrete;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -28,6 +29,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String SECRETE_NAME = "secreteName";
     private static final String SECRETE_KEY = "secreteKey";
     private static final String SECRETE_DESC = "secreteDesc";
+
+    String description;
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -141,26 +144,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return secrete;
     }
-    public List<String> getSecreteListTitle() {
-        List<String> secreteListTitle = new ArrayList<String>();
 
+    public HashMap<String, String> getSecreteList() {
+        HashMap<String, String> nameDesc = new HashMap<>();
         String selectQuery = "SELECT  * FROM " + TABLE_SECRET +" ORDER BY "+SECRETE_ID + " ASC";
-
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
             do {
-                Secrete secrete = new Secrete();
-                secrete.setId(Integer.parseInt(cursor.getString(0)));
-                secrete.setSecreteName(cursor.getString(1));
-                secrete.setSecreteKey(cursor.getString(2));
-
-                secreteListTitle.add(secrete.getSecreteName());
+                description = cursor.getString(3);
+                if(description.length() > 15){
+                    description = description.substring(0,20) + "...";
+                }
+                nameDesc.put(cursor.getString(1), description);
             } while (cursor.moveToNext());
         }
-        return secreteListTitle;
+        return nameDesc;
     }
+
 
     public List<Secrete> getSecreteListObjects() {
         List<Secrete> secreteListObjects = new ArrayList<Secrete>();
