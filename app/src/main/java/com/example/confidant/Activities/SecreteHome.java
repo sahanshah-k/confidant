@@ -26,7 +26,7 @@ import java.io.UnsupportedEncodingException;
 
 public class SecreteHome extends AppCompatActivity {
 
-    TextInputEditText nameHome, passHome, descHome;
+    TextInputEditText nameHome, passHome, descHome, usernameHome;
     MaterialButton decrypt;
     FloatingActionButton floatEdit;
     public static int index;
@@ -75,6 +75,7 @@ public class SecreteHome extends AppCompatActivity {
         descHome = findViewById(R.id.descHome);
         floatEdit = findViewById(R.id.floatEdit);
         decrypt = findViewById(R.id.decrypt);
+        usernameHome = findViewById(R.id.nameHome_username);
 
         index = getIntent().getIntExtra("index",-1);
         //Toast.makeText(getApplicationContext(),String.valueOf(index),Toast.LENGTH_SHORT).show();
@@ -83,6 +84,7 @@ public class SecreteHome extends AppCompatActivity {
         nameHome.setText(secrete.getSecreteName());
         passHome.setText(secrete.getSecreteKey());
         descHome.setText(secrete.getDescription());
+        usernameHome.setText(secrete.getUsername());
 
         final Intent i = new Intent(SecreteHome.this,SecreteEdit.class);
         i.putExtra("index",index);

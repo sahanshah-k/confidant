@@ -1,11 +1,9 @@
 package com.example.confidant.Activities;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +11,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.confidant.Domain.Secrete;
@@ -23,7 +20,7 @@ import com.example.confidant.Service.DatabaseHandler;
 import java.io.UnsupportedEncodingException;
 
 public class SecreteNew extends AppCompatActivity {
-    TextInputEditText nameHome, passHome, descHome, confPass;
+    TextInputEditText nameHome, passHome, descHome, confPass, newUsername;
     Editable name, pass, conf, desc;
     FloatingActionButton newButton;
 
@@ -37,7 +34,7 @@ public class SecreteNew extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secrete_new);
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog_Alert);
         AlertDialog.Builder builderConfirm = new AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog_Alert);
         builder.setTitle("Error");
@@ -52,6 +49,7 @@ public class SecreteNew extends AppCompatActivity {
         passHome = findViewById(R.id.newPass);
         descHome = findViewById(R.id.newDesc);
         confPass = findViewById(R.id.newConfPass);
+        newUsername = findViewById(R.id.newName_username);
 
         name = nameHome.getText();
         pass = passHome.getText();
@@ -75,7 +73,7 @@ public class SecreteNew extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         String base64pass = Base64.encodeToString(data, Base64.DEFAULT);
-                        Secrete secrete = new Secrete(name.toString(), base64pass.trim(), desc.toString());
+                        Secrete secrete = new Secrete(name.toString(), base64pass.trim(), desc.toString(), newUsername.getText().toString());
                         db.addSecrete(secrete);
                         Toast.makeText(getApplicationContext(),"Added new Secrete!",Toast.LENGTH_LONG).show();
                         startActivity(i);
@@ -96,6 +94,8 @@ public class SecreteNew extends AppCompatActivity {
                     descHome.setError("Description Required");
                 else if(TextUtils.isEmpty(conf))
                     confPass.setError("Required");
+                else if(TextUtils.isEmpty(newUsername.getText()))
+                    newUsername.setError("Required");
                 else {
                     if(!pass.toString().equals(conf.toString())){
                         dialog.show();

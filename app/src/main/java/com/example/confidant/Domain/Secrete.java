@@ -5,6 +5,7 @@ public class Secrete {
     String secreteName;
     String secreteKey;
     String description;
+    String username;
 
     public Secrete() {
     }
@@ -20,6 +21,21 @@ public class Secrete {
         this.secreteName = secreteName;
         this.secreteKey = secreteKey;
         this.description = description;
+    }
+
+    public Secrete(String secreteName, String secreteKey, String description, String username) {
+        this.secreteName = secreteName;
+        this.secreteKey = secreteKey;
+        this.description = description;
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getDescription() {

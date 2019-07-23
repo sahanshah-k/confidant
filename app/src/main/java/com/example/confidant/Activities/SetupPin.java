@@ -68,7 +68,7 @@ public class SetupPin extends AppCompatActivity {
             public void onComplete(String pin) {
                 vibe.vibrate(100);
                 Details details = (Details) getIntent().getSerializableExtra("details");
-                details.setPin(Integer.parseInt(pin.trim()));
+                details.setPin(pin.trim());
                 Intent confirm = new Intent(SetupPin.this, SetupPinConfirm.class);
                 confirm.putExtra("details", details);
                 startActivity(confirm);

@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.confidant.Domain.Secrete;
 import com.example.confidant.R;
 import com.example.confidant.Service.DatabaseHandler;
+import com.example.confidant.Service.MyAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +39,8 @@ public class Land extends AppCompatActivity {
     TextInputEditText search;
     String dataFromOther = null;
     SimpleAdapter adapter;
+    MyAdapter myAdapter;
+    LinkedHashMap<String, String> nameDesc;
     @Override
     public void onBackPressed(){
         Intent a = new Intent(Intent.ACTION_MAIN);
@@ -57,25 +60,31 @@ public class Land extends AppCompatActivity {
         final DatabaseHandler db = new DatabaseHandler(this);
         final List<Secrete> secreteListObjects = db.getSecreteListObjects();
 
-        LinkedHashMap<String, String> nameDesc = db.getSecreteList();
-
         List<HashMap<String, String>> listItems = new ArrayList<>();
-        adapter = new SimpleAdapter(this, listItems, R.layout.list_item,
-                new String[]{"First Line", "Second Line"},
-                new int[]{R.id.list_text1, R.id.list_text2});
+  /*      adapter = new SimpleAdapter(this, listItems, R.layout.list_item,
+                new String[]{"FirstLine", "SecondLine"},
+                new int[]{R.id.list_text1, R.id.list_text2});*/
 
+        myAdapter = new MyAdapter(getApplicationContext(), secreteListObjects);
 
-        Iterator it = nameDesc.entrySet().iterator();
+     /*List<String> secreteListTitle = db.getSecreteListTitle();
+       arrayAdapter = new ArrayAdapter<String>(
+                this,
+                R.layout.simple_list_template,
+                secreteListTitle );*/
+
+        /*Iterator it = nameDesc.entrySet().iterator();
         while (it.hasNext())
         {
             HashMap<String, String> resultsMap = new HashMap<>();
             Map.Entry pair = (Map.Entry)it.next();
-            resultsMap.put("First Line", pair.getKey().toString());
-            resultsMap.put("Second Line", pair.getValue().toString());
+            resultsMap.put("FirstLine", pair.getKey().toString());
+            resultsMap.put("SecondLine", pair.getValue().toString());
             listItems.add(resultsMap);
         }
-
-        secreteList.setAdapter(adapter);
+*/
+        //secreteList.setAdapter(adapter);
+        secreteList.setAdapter(myAdapter);
 
         secreteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -90,6 +99,8 @@ public class Land extends AppCompatActivity {
 
 
 
+
+
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -98,12 +109,13 @@ public class Land extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                (Land.this).adapter.getFilter().filter(charSequence);
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                //Toast.makeText(getApplicationContext(),editable,Toast.LENGTH_SHORT).show();
+                myAdapter.getFilter().filter(editable);
             }
         });
 
