@@ -89,7 +89,7 @@ public class MyAdapter extends BaseAdapter implements Filterable {
                     if ((mStringFilterList.get(i).getSecreteName().toUpperCase())
                             .contains(constraint.toString().toUpperCase())) {
 
-                        Secrete bean = new Secrete(mStringFilterList.get(i)
+                        Secrete bean = new Secrete(mStringFilterList.get(i).getId(),mStringFilterList.get(i)
                                 .getSecreteName(),"","", mStringFilterList.get(i)
                                 .getUsername());
                         filterList.add(bean);

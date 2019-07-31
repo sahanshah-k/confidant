@@ -91,7 +91,9 @@ public class Land extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                // Toast.makeText(getApplicationContext(),String.valueOf(i),Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Land.this,SecreteHome.class);
-                intent.putExtra("index",secreteListObjects.get(i).getId());
+                //intent.putExtra("index",myAdapter.getItem(0);
+                Secrete secreteItem = (Secrete) myAdapter.getItem(i);
+                intent.putExtra("index",secreteItem.getId());
                 //based on item add info to intent
                 startActivity(intent);
             }

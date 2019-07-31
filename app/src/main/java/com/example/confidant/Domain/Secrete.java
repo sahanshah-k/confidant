@@ -29,6 +29,13 @@ public class Secrete {
         this.description = description;
         this.username = username;
     }
+    public Secrete(int id, String secreteName, String secreteKey, String description, String username) {
+        this.id = id;
+        this.secreteName = secreteName;
+        this.secreteKey = secreteKey;
+        this.description = description;
+        this.username = username;
+    }
 
     public String getUsername() {
         return username;
