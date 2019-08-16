@@ -10,20 +10,18 @@
         android:id="@+id/pin_lock_view_setup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="244dp"
+        android:layout_marginTop="16dp"
         app:dotDiameter="40dp"
         app:indicatorType="fillWithAnimation"
+
+
         app:keypadButtonBackgroundDrawable="@drawable/ic_radio_button_unchecked_black_24dp"
-
-
         app:keypadButtonSize="80dp"
         app:keypadTextSize="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/indicator_dots_setup"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintTop_toBottomOf="@+id/indicator_dots_setup" />
 
 
     <com.andrognito.pinlockview.IndicatorDots
@@ -40,12 +38,26 @@
         android:id="@+id/imageView2"
         android:layout_width="120dp"
         android:layout_height="125dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline12"
         app:srcCompat="@drawable/ic_lock_outline_black_24dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
 
     <!--
     <include

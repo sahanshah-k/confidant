@@ -12,17 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:id="@+id/floatButton"
+        android:id="@+id/landBottom"
         app:hideOnScroll="true"
         app:layout_scrollFlags="scroll|enterAlways"
-    >
+        app:navigationIcon="@drawable/ic_menu_primary_dark_24dp"
+        >
 
     </android.support.design.bottomappbar.BottomAppBar>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/floatButton"
+        app:layout_anchor="@id/landBottom"
         android:id="@+id/addNewSecrete"
         android:src="@drawable/ic_add_primary_dark_24dp"
         android:backgroundTint="@color/colorAccent"

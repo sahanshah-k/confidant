@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorPrimary">#344955</color>
     <color name="colorSecondary">#4A6572</color>
+    <color name="statusBarColor">#344955</color>
     <color name="colorPrimaryDark">#232F34</color>
     <color name="colorAccent">#f9aa33</color>
     <color name="colorWhite">#FFFFFF</color>

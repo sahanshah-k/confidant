@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textAllCaps="true"
-        android:maxLength="15"
+        android:maxLength="40"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

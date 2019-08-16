@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.confidant">
+    package="com.infinity.confidant">
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -11,27 +11,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.infinity.confidant.MainActivity"
             android:noHistory="true">
         </activity>
         <activity
-            android:name=".Activities.SetupPin"
+            android:name="com.infinity.confidant.Activities.SetupPin"
             android:noHistory="true"></activity>
-        <activity android:name=".Activities.Land"
-            android:noHistory="true"></activity>
-        <activity
-            android:name=".Activities.SecreteHome"
+        <activity android:name="com.infinity.confidant.Activities.Land"
             android:noHistory="true"></activity>
         <activity
-            android:name=".Activities.SecreteNew"
+            android:name="com.infinity.confidant.Activities.SecreteHome"
             android:noHistory="true"></activity>
         <activity
-            android:name=".Activities.SecreteEdit"
+            android:name="com.infinity.confidant.Activities.SecreteNew"
             android:noHistory="true"></activity>
         <activity
-            android:name=".Activities.SetupPinConfirm"
+            android:name="com.infinity.confidant.Activities.SecreteEdit"
             android:noHistory="true"></activity>
-        <activity android:name=".Activities.Home">
+        <activity
+            android:name="com.infinity.confidant.Activities.SetupPinConfirm"
+            android:noHistory="true"></activity>
+        <activity android:name="com.infinity.confidant.Activities.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
