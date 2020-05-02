@@ -4,6 +4,6 @@
 
 [![](https://img.shields.io/badge/author-@sahanshah\%2Dkblue.svg?style=flat)](https://google.com)
 
-##Screenshots
+## Screenshots
 
-![alt text](https://github.com/sahanshah-k/confidant/blob/master/Files/screenshot\%20(1).jpeg)
+<img align="left" width="100" height="100" src="http://www.fillmurray.com/100/100">
