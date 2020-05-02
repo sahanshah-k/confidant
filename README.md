@@ -4,6 +4,8 @@
 
 [![](https://img.shields.io/badge/author-@sahanshah\%2Dkblue.svg?style=flat)](https://google.com)
 
+https://play.google.com/store/apps/details?id=com.infinity.confidant
+
 ## Screenshots
 <p align="center">
 <img width="300" height="500" src="https://raw.githubusercontent.com/sahanshah-k/confidant/master/Files/screenshot%20(1).jpeg">
